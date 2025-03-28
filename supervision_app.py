@@ -5,7 +5,7 @@ import re
 
 # Define username and password
 USERNAME = "admin"
-PASSWORD = "password123"
+PASSWORD = "Autism123!"
 
 # Streamlit UI
 st.title("Supervision Report Processor")
