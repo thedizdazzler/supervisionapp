@@ -3,7 +3,7 @@ import streamlit as st
 from datetime import datetime
 import re
 
-
+# Define username and password
 USERNAME = st.secrets["USERNAME"]
 PASSWORD = st.secrets["PASSWORD"]
 
@@ -75,6 +75,17 @@ else:
 
         st.subheader("Patient Supervision")
         st.dataframe(patient_report)
+
+        # Export Patient Supervision Report
+        patient_excel_file = "patient_supervision_report.xlsx"
+        patient_report.to_excel(patient_excel_file, index=False)
+        with open(patient_excel_file, "rb") as file:
+            st.download_button(
+                label="Download Patient Supervision Report (.xlsx)",
+                data=file,
+                file_name=patient_excel_file,
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            )
 
         # --- BT Supervision Report ---
         bt_total = df_bt.groupby("Staff Member")["Duration"].sum().reset_index(name="Total Hours")
