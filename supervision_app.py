@@ -3,9 +3,10 @@ import streamlit as st
 from datetime import datetime
 import re
 
-# Define username and password
-USERNAME = "admin"
-PASSWORD = "Autism123!"
+
+USERNAME = st.secrets["USERNAME"]
+PASSWORD = st.secrets["PASSWORD"]
+
 
 # Streamlit UI
 st.title("Supervision Report Processor")
